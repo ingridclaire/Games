@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Game</title>
+  </head>
+  <body>
+    <h1>Lapis, Papyrus, Scalpellus!</h1>
+    <p>Try your luck at beating the computer! Click one of the buttons below!</p>
+    <p>Remember, Lapis beats Scalpellus, Scalpellus beats Papyrus, and Papyrus beats Lapis</p>
+    <button id="Lapis" >Lapis</button>
+    <button id="Papyrus" >Papyrus</button>
+    <button id="Scalpellus" >Scalpellus</button>
+    <script>
+
+      let computerChoice = null;
+      let playerChoice = null;
+
+      const getComputerChoice = () => {
+        const computerOptions = ["Lapis", "Papyrus", "Scalpellus"];
+        const randomIndex = Math.floor(Math.random() * 3);
+        computerChoice = computerOptions[randomIndex];
+      }
+
+      const playGame = (computerChoice=null, playerChoice=null) => {
+        console.log("Computer played: " + computerChoice +"\nYou played: " + playerChoice);
+        if (computerChoice === playerChoice) {
+          alert("It's a tie!");
+        } else if ((computerChoice === "Lapis" && playerChoice === "Scalpellus") || (computerChoice === "Scalpellus" && playerChoice === "Papyrus") || (computerChoice === "Papyrus" && playerChoice === "Lapis")) {
+          alert("You lose!");
+        } else {
+          alert("You win!");
+        }
+      }
+
+      const buttons = document.querySelectorAll("button");
+      for (let item of buttons) {
+        item.addEventListener("click", (event) => {
+          playerChoice = event.target.innerHTML
+          getComputerChoice();
+          playGame(computerChoice, playerChoice);
+        })
+      }
+    </script>
+  </body>
+</html>
