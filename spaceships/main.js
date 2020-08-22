@@ -89,8 +89,3 @@ let roundWon = false;
 document.getElementById('start-game').addEventListener('click', () => {
   playGame(myShip, alienFleet);
 })
-
-
-
-
-
